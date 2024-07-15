@@ -3,6 +3,7 @@ import axios from "axios";
 import hangul from "hangul-js";
 import debounce from "lodash.debounce";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 function PokemonList() {
   const [pokemonData, setPokemonData] = useState([]);
@@ -49,13 +50,17 @@ function PokemonList() {
     fetchPokemon(page);
   }, [page]);
 
-  const handlePokemonClick = (id) =>{
+  const handlePokemonClick = (id) => {
     navigate(`/pokemon/${id}`);
-  }
-  
+  };
+
   const renderPokemonList = useMemo(() => {
     return filterPokemon.map((pokemon) => (
-      <div key={pokemon.id} className="pokemon-card" onClick={() => handlePokemonClick(pokemon.id)}>
+      <div
+        key={pokemon.id}
+        className="pokemon-card"
+        onClick={() => handlePokemonClick(pokemon.id)}
+      >
         <div className="image-container">
           <img src={pokemon.sprites.front_default} alt={pokemon.korean_name} />
         </div>
@@ -99,10 +104,22 @@ function PokemonList() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  const ListContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `;
+
+  const H = styled.p`
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 2px 4px 8px rgba(22, 22, 22, 0.5);
+    font-size: ${(props) => props.fontSize};
+  `;
 
   return (
-    <div className="list-container">
-      <div className="h1">Pokemon List</div>
+    <ListContainer>
+      <H fontSize={"80px"}>Pokemon Wiki</H>
       <input
         value={keyword}
         className="searchBox"
@@ -112,8 +129,8 @@ function PokemonList() {
       <div className="container">
         <div className="pokemon-list">{renderPokemonList}</div>
       </div>
-      {loading && <p className="loading">Loading...</p>}
-    </div>
+      {loading && <H fontSize="64px">Loading...</H>}
+    </ListContainer>
   );
 }
 

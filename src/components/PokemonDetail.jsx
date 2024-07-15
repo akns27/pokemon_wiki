@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
 
 const PokemonDetail = () => {
   const { id } = useParams();
@@ -71,17 +72,36 @@ const PokemonDetail = () => {
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="h2">Loading...</div>;
   }
 
   if (!pokemon) {
     return <div>Pokemon not found</div>;
   }
 
+  const MonsterBall = styled.div`
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+  `;
+
+  const MonsterBallImg = styled.img`
+    width: 80px;
+    height: 80px;
+  `;
+
+  const BigP = styled.p`
+    font-size: 24px;
+  `;
+
+  const P = styled.p`
+    font-size: 18px;
+  `;
+
   return (
     <>
       <div className="detail-container">
-        <div className="h2">
+        <div className="h2" >
           NO. {pokemon.id}-{pokemon.korean_name}
         </div>
         <img
@@ -90,38 +110,41 @@ const PokemonDetail = () => {
           alt={pokemon.korean_name}
         />
         <div className="detail-sub-container">
-          <p className="big-p">몸무게</p>
-          <p>{pokemon.weight}</p>
-          <p className="big-p">키</p>
-          <p>0.{pokemon.height}m</p>
-          <p className="big-p">속성</p>
-          <p>
-            {" "}
+          <BigP>몸무게</BigP>
+          <P>{pokemon.weight}</P>
+          <BigP>키</BigP>
+          <P>0.{pokemon.height}m</P>
+          <BigP>속성</BigP>
+          <P>
             {pokemon.types.map((type, index) => (
               <li key={index}>{type}</li>
             ))}
-          </p>
-          <p className="big-p">특성 </p>
-          <p>
+          </P>
+          <BigP>특성 </BigP>
+          <P>
             {pokemon.abilities.map((ability, index) => (
               <li key={index}>{ability}</li>
             ))}
-          </p>
-          <p className="big-p">기술</p>
-          <ul>
-            {pokemon.moves.map((move, index) => (
-              <li key={index}>{move}</li>
-            ))}
+          </P>
+          <BigP>기술</BigP>
+          <ul style={{ display: "flex", justifyContent: "center" }}>
+            <div className="pokemon-skill-container">
+              {pokemon.moves.map((move, index) => (
+                <li className="pokemon-skill" key={index}>
+                  {move}
+                </li>
+              ))}
+            </div>
           </ul>
         </div>
       </div>
 
-      <div className="monster-ball">
-        <img
-          className="monster-ball-img"
+      <MonsterBall>
+        <MonsterBallImg
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
-        ></img>
-      </div>
+          alt="Monster Ball"
+        />
+      </MonsterBall>
     </>
   );
 };

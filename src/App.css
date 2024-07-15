@@ -12,25 +12,9 @@ body {
   font-family: DOSGothic, sans-serif;
 }
 
-.list-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.h1 {
-  text-align: center;
-  color: #ffffff;
-  text-shadow: 2px 4px 8px rgba(22, 22, 22, 0.5);
-  font-size: 120px;
-}
 
-.h2{
-  text-align: center;
-  color: #ffffff;
-  text-shadow: 2px 4px 8px rgba(22, 22, 22, 0.5);
-  font-size: 64px;
-}
+
 .container {
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.17);
@@ -89,13 +73,16 @@ body {
 
 .pokemon-name {
   font-size: 24px;
+  color: black;
 }
 
 .pokemon-id {
   font-size: 20px;
+  color: black;
 }
 
 .searchBox {
+  font-family: Pretendard;
   width: 560px;
   height: 40px;
   border: 1px solid rgba(255, 255, 255, 0.48);
@@ -104,6 +91,7 @@ body {
   border-radius: 8px;
   margin-bottom: 24px;
   padding-left: 8px;
+  color: black;
 }
 
 @media (max-width: 768px) {
@@ -131,42 +119,59 @@ body {
   animation: fadeIn 0.5s ease-in;
 }
 
-.detail-container{
+.detail-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: black;
+
 }
 
-.detail-sub-container{
+.detail-sub-container {
   border-radius: 16px;
   width: 600px;
   padding: 20px;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.46);
-  backdrop-filter: blur(8.399999618530273px);
+  background: rgba(255, 255, 255, 0.427);
+  backdrop-filter: blur(15px);
 }
 
-ul, li{
+ul,
+li {
   list-style: none;
-
 }
 
-.monster-ball{
-  position: fixed;
-  bottom: 2%;
-  right: 2%;
-}
 
-.monster-ball-img{
-  width: 80px;
-  height: 80px;
-}
 
-.pokemon-img{
+
+
+.pokemon-img {
   width: 300px;
 }
 
-.big-p{
-  font-size: 24px;
+
+.pokemon-skill-container{
+  width: 80%;
+  height: 100px;
+  background-color: #ffffff;
+  overflow-y: scroll;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.427);
+  backdrop-filter: blur(8px);
+}
+
+.pokemon-skill{
+  text-align: center;
+  width: 95%;
+  background-color: lightgray;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.17);
+  backdrop-filter: blur(2.4000000953674316px);
+  
 }
